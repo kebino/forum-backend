@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
+const config = require('./config/config');
 
 const forum = require('./api/forum-api');
 const profile = require('./api/profile-api');
@@ -9,7 +10,7 @@ const comment = require('./api/comment-api');
 
 //conncect to db
 mongoose.Promise =  global.Promise;
-mongoose.connect('mongodb://localhost/forum');
+mongoose.connect(config.database);
 
 //declare the port of our server
 const port = process.env.PORT || 3000;
